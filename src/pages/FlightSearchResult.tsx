@@ -178,7 +178,7 @@ function FlightSearchResult() {
             <Table 
               dataSource={outboundFlights} 
               columns={outboundColumns} 
-              rowKey="flightId" 
+              // rowKey="flightId" 
               pagination={false}
             />
           </Card>
@@ -190,7 +190,7 @@ function FlightSearchResult() {
                 <Table 
                   dataSource={returnFlights} 
                   columns={returnColumns} 
-                  rowKey="flightId" 
+                  // rowKey="flightId" 
                   pagination={false}
                 />
               </Card>

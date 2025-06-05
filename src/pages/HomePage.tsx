@@ -113,7 +113,7 @@ function HomePage() {
               <Select 
                 placeholder="出发地"
                 style={{ width: 'auto' }}  // 宽度自适应内容
-                dropdownMatchSelectWidth={false}  // 下拉菜单宽度独立
+                popupMatchSelectWidth={false}  // 下拉菜单宽度独立
               >
                 {airports.map((airport) => (
                   <Option key={airport.code} value={airport.code}>
@@ -134,7 +134,7 @@ function HomePage() {
               <Select 
                 placeholder="目的地"
                 style={{ width: 'auto' }}  // 宽度自适应内容
-                dropdownMatchSelectWidth={false}  // 下拉菜单宽度独立
+                popupMatchSelectWidth={false}  // 下拉菜单宽度独立
               >
                 {airports.map((airport) => (
                   <Option key={airport.code} value={airport.code}>

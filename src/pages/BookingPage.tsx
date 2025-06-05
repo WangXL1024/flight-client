@@ -298,7 +298,7 @@ function BookingPage() {
         <Table 
           dataSource={flightData} 
           columns={flightColumns} 
-          rowKey="flightId" 
+          // rowKey="flightId" 
           pagination={false}
         />
 
@@ -318,7 +318,7 @@ function BookingPage() {
               key: 'email',
             },
           ]}
-          rowKey={(record: any, index: any) => index.toString()}
+          // rowKey={(record: any, index: any) => index.toString()}
           pagination={false}
         />
 

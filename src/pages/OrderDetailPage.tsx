@@ -14,6 +14,7 @@ function OrderDetailPage() {
   const navigate = useNavigate();
   
   useEffect(() => {
+    setLoading(true);
     const authToken = localStorage.getItem('authToken');
     if (!authToken) {
       // 未登录，跳转到登录页面
@@ -198,7 +199,7 @@ function OrderDetailPage() {
                 key: 'email',
               },
             ]}
-            rowKey="passengerId"
+            // rowKey="passengerId"
             pagination={false}
             // emptyText="未找到乘客信息"
           />
