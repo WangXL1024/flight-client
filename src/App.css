@@ -1,0 +1,240 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.logo {
+  width: 120px;
+  height: 31px;
+  background: rgba(255, 255, 255, 0.2);
+  margin: 16px 24px 16px 0;
+  float: left;
+}
+
+.header-right {
+  float: right;
+  color: white;
+  margin-right: 24px;
+}
+
+/* .login-link {
+  color: white;
+  cursor: pointer;
+}
+
+.login-link:hover {
+  color: #1890ff;
+} */
+
+.home-page {
+  padding: 24px;
+}
+
+.search-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background-color: #fff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.search-header {
+  margin-bottom: 16px;
+}
+
+.search-button {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+}
+
+.flight-search-result {
+  padding: 24px;
+}
+
+.search-summary {
+  margin-bottom: 24px;
+}
+
+.search-details {
+  margin-top: 12px;
+  font-size: 16px;
+}
+
+.booking-page {
+  padding: 24px;
+}
+
+.booking-content {
+  margin-bottom: 24px;
+}
+
+.booking-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.success-message {
+  text-align: center;
+  padding: 48px;
+}
+
+.success-icon {
+  font-size: 48px;
+  color: #52c41a;
+  margin-bottom: 24px;
+}
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 128px);
+}
+
+.login-container {
+  width: 400px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.login-form {
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.login-form-button {
+  width: 100%;
+}
+
+.register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 128px);
+}
+
+.register-container {
+  width: 600px;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.register-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.register-form-button {
+  width: 100%;
+}
+
+.register-success {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 48px;
+  text-align: center;
+}
+
+.order-list-page {
+  padding: 24px;
+}
+
+.order-detail-page {
+  padding: 24px;
+}
+
+.order-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.order-reference, .order-status, .order-time {
+  flex: 1;
+  min-width: 200px;
+}
+
+.order-flights, .order-passengers, .order-summary {
+  margin-bottom: 24px;
+}
+
+.flight-info {
+  padding: 16px;
+}
+
+.flight-route {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.flight-departure, .flight-arrival {
+  flex: 1;
+}
+
+.flight-arrow {
+  text-align: center;
+  flex: 0.5;
+}
+
+.flight-time {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+.flight-airport {
+  color: #666;
+}
+
+.flight-duration {
+  margin-top: 8px;
+  color: #666;
+}
+
+.flight-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.flight-airline, .flight-aircraft, .flight-price {
+  flex: 1;
+  min-width: 200px;
+}
+
+.order-total {
+  max-width: 400px;
+  margin-left: auto;
+  padding: 16px;
+  border: 1px solid #e8e8e8;
+  border-radius: 4px;
+}
+
+.login-link {
+  color: #1890ff; /* 链接颜色 */
+  text-decoration: none; /* 去掉下划线 */
+  margin-left: 10px; /* 与其他元素的间距 */
+}
+.login-link:hover {
+  color: #40a9ff; /* 鼠标悬停时颜色 */
+  text-decoration: underline; /* 鼠标悬停时显示下划线 */
+}
