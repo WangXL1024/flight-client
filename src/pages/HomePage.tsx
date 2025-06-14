@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Input, Select, DatePicker, Button, Space, Radio, Divider } from 'antd';
+import { useState, useEffect } from 'react';
+import { Form, Select, DatePicker, Button, Space, Radio, Divider } from 'antd';
 import { SearchOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../services/http';
 dayjs.extend(isSameOrBefore);
 dayjs.extend(isSameOrAfter);
 
@@ -21,16 +22,16 @@ function HomePage() {
     dates: dayjs.Dayjs[] | dayjs.Dayjs;
   }>();
   const [airports, setAirports] = useState<any[]>([]);
-  const [error, setError] = useState('');
+  // const [error, setError] = useState('');
 
   // 加载机场数据
   useEffect(() => {
     const fetchAirports = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8080/api/airports');
+        const response = await api.get('/airports');
         setAirports(response.data);
       } catch (err) {
-        setError('获取机场数据失败');
+        // setError('获取机场数据失败');
         console.error(err);
       }
     };

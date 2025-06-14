@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Table, Tag, Space, Button, Divider, Card, Alert } from 'antd';
+import { Table, Tag, Button, Divider, Card, Alert } from 'antd';
 import moment from 'moment';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../services/http';
+
 
 function FlightSearchResult() {
   const location = useLocation();
@@ -11,8 +13,8 @@ function FlightSearchResult() {
   const [returnFlights, setReturnFlights] = useState<any[]>([]);
   const [selectedOutboundFlight, setSelectedOutboundFlight] = useState<any>(null);
   const [selectedReturnFlight, setSelectedReturnFlight] = useState<any>(null);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState('');
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     if (location.state) {
@@ -21,7 +23,7 @@ function FlightSearchResult() {
 
       const handleSearch = async () => {    
         try {
-          const response = await axios.post('http://127.0.0.1:8080/api/flights/search', {
+          const response = await api.post('/flights/search', {
             tripType:location.state.tripType,
             departureAirportCode: location.state.departureAirportCode,
             destinationAirportCode: location.state.destinationAirportCode,
@@ -40,10 +42,10 @@ function FlightSearchResult() {
           setOutboundFlights(outboundFlightData);
           setReturnFlights(returnFlightData);
         } catch (err) {
-          setError('搜索航班失败');
+          // setError('搜索航班失败');
           console.error(err);
         } finally {
-          setLoading(false);
+          // setLoading(false);
         }
       };
       handleSearch()
@@ -79,7 +81,7 @@ function FlightSearchResult() {
       title: '到达',
       dataIndex: 'destinationAirport',
       key: 'destination',
-      render: (destinationAirport: { name: string }, record: any) => (
+      render: (destinationAirport: { name: string }) => (
           <div>
               <div>{destinationAirport.name}</div>
               {/* <div className="text-sm text-gray-500">

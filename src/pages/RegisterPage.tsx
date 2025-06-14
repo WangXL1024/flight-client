@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Form, Input, Button, Select, message, Alert } from 'antd';
 import { UserOutlined, LockOutlined, MailOutlined, PhoneOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../services/http';
 
 const { Option } = Select;
 
@@ -20,7 +21,7 @@ function RegisterPage() {
     // 注册请求
     const handleRegister = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:8080/api/user/register', {
+          const response = await api.post('/user/register', {
             email: values.email,
             password: values.password,
             firstName: values.firstName,

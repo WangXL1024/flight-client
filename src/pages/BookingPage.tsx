@@ -1,14 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { 
-  Form, Input, Select, Button, Space, Divider, Card, Alert, Steps, Table, Tag,
+  Form, Input, Button, Divider, Card, Alert, Steps, Table, 
   message, Modal,
 } from 'antd';
 import { UserOutlined, PlusOutlined, CheckOutlined } from '@ant-design/icons';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../services/http';
 
 const { Step } = Steps;
-const { Option } = Select;
+
 
 
 function BookingPage() {
@@ -24,10 +25,10 @@ function BookingPage() {
   }[]>([{ firstName: '', lastName: '', email: '' }]); // 初始化至少1名乘客
   const [form] = Form.useForm();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [bookingResponse, setBookingResponse] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [error, setError] = useState('');
+  // const [loading, setLoading] = useState(false);
+  // const [bookingResponse, setBookingResponse] = useState(0);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
    const [modal, contextHolder] = Modal.useModal();
   useEffect(() => {
     // 检查用户是否已登录
@@ -37,19 +38,19 @@ function BookingPage() {
     // 获取航班信息
     const handleSearch = async () => {    
         try {
-          const response_outbound = await axios.get('http://127.0.0.1:8080/api/flights/'+outboundFlightId);
+          const response_outbound = await api.get('/flights/'+outboundFlightId);
           setOutboundFlight(response_outbound.data);
           // outboundFlight.flightType = "OUTBOUND"//异步调用，设定不可
           if (tripType === 'ROUND_TRIP' && returnFlightId) {
-            const response_return = await axios.get('http://127.0.0.1:8080/api/flights/'+returnFlightId);
+            const response_return = await api.get('/flights/'+returnFlightId);
             setReturnFlight(response_return.data);
             // returnFlight.flightType = "RETURN"
           }
         } catch (err) {
-          setError('搜索航班失败');
+          // setError('搜索航班失败');
           console.error(err);
         } finally {
-          setLoading(false);
+          // setLoading(false);
         }
       };
       handleSearch()
@@ -126,7 +127,7 @@ function BookingPage() {
 
       try {
         // 显示加载状态
-        setLoading(true);
+        // setLoading(true);
         
         // 1. 检查用户登录状态
         const storedUser = localStorage.getItem('currentUser');
@@ -144,7 +145,7 @@ function BookingPage() {
 
         const user = JSON.parse(storedUser);
 
-        const response = await axios.post('http://127.0.0.1:8080/api/bookings', 
+        const response = await api.post('/bookings', 
           {
             userId: user.userId,
             flights: flightData,
@@ -157,7 +158,7 @@ function BookingPage() {
           }
         );
         
-        setBookingResponse(response.data);
+        // setBookingResponse(response.data);
         
         // 显示成功模态框
         modal.success({
@@ -168,7 +169,7 @@ function BookingPage() {
           },
         });
       } catch (err:any) {
-          setError('预订失败');
+          // setError('预订失败');
           console.error(err);       
           // 处理Token无效的情况
           if (err.response?.status === 401) {
@@ -187,7 +188,7 @@ function BookingPage() {
           }
       } finally {
         // 隐藏加载状态
-        setLoading(false);
+        // setLoading(false);
       }
   };
 
@@ -267,7 +268,7 @@ function BookingPage() {
       title: '到达',
       dataIndex: 'destinationAirport',
       key: 'destination',
-      render: (destinationAirport: { name: string }, record: any) => (
+      render: (destinationAirport: { name: string }) => (
           <div>
               <div>{destinationAirport.name}</div>
               {/* <div className="text-sm text-gray-500">

@@ -1,11 +1,12 @@
 // pages/LoginPage.js
-import React, { useState } from'react';
+import { useState } from'react';
 import { Form, Input, Button, message } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useLocation, useNavigate } from 'react-router-dom';
 // 引入User类型定义
 import type { User } from '../App';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../services/http';
 
 // 明确props类型
 type LoginPageProps = {
@@ -21,7 +22,7 @@ const LoginPage = ({ onLogin }: LoginPageProps) => {
   const handleSubmit = async (values: { email: string; password: string }) => {
     setLoading(true);
     try {
-      const response = await axios.post('http://127.0.0.1:8080/api/auth/login', {
+      const response = await api.post('/auth/login', {
             email:values.email,
             password:values.password
           });

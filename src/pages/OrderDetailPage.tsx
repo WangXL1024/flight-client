@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import { Card, Tabs, Table, Tag, Space, Badge, Divider, Button, Alert } from 'antd';
+import { Card, Table, Tag, Divider, Button, Alert } from 'antd';
 import moment from 'moment';
 import { ArrowRightOutlined } from '@ant-design/icons';
-import axios from 'axios';
-const { TabPane } = Tabs;
+// import axios from 'axios';
+import api from '../services/http';
+// const { TabPane } = Tabs;
 
 function OrderDetailPage() {
   const { reference } = useParams<{ reference: string }>();
@@ -27,7 +28,7 @@ function OrderDetailPage() {
     // 查找订单
     const handleSearch = async () => {    
         try {
-          const response_outbound = await axios.get(`http://127.0.0.1:8080/api/bookings/${reference}`,
+          const response_outbound = await api.get(`/bookings/${reference}`,
             {
               headers: {
                 'Authorization': authToken // 设置Token到请求头

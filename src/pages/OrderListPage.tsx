@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Table, Tag, Space, Button, Divider, Card, Alert, Tabs } from 'antd';
+import { useState, useEffect } from 'react';
+import { Table, Tag, Button, Alert, Tabs } from 'antd';
 import moment from 'moment';
-import { CheckCircleOutlined, CloseCircleOutlined } from '@ant-design/icons';
-import axios from 'axios';
+// import axios from 'axios';
+import api from '../services/http';
 import { useNavigate } from 'react-router-dom';
 import type { TabsProps } from 'antd';
 
@@ -10,8 +10,8 @@ function OrderListPage() {
   const [currentTab, setCurrentTab] = useState('upcoming');
   const [upcomingOrders, setUpcomingOrders] = useState<any[]>([]);
   const [completedOrders, setCompletedOrders] = useState<any[]>([]);
-  const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState('');
+  // const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -30,8 +30,8 @@ function OrderListPage() {
 
     const handleSearch = async () => {    
       try {
-        setLoading(true);
-        const response = await axios.get(`http://127.0.0.1:8080/api/bookings/user/${user.userId}`, {
+        // setLoading(true);
+        const response = await api.get(`/bookings/user/${user.userId}`, {
           headers: {
             'Authorization': authToken
           }
@@ -51,9 +51,9 @@ function OrderListPage() {
         setUpcomingOrders(upcomingOrdersData);
         setCompletedOrders(completedOrdersData);
       } catch (err) {
-        setError('搜索航班失败');
+        // setError('搜索航班失败');
       } finally {
-        setLoading(false);
+        // setLoading(false);
       }
     };
     
